@@ -1,7 +1,7 @@
 {
-  "name": "jsnd3_mars_dashboard",
+  "name": "mars_rovers_dashbord",
   "version": "1.0.0",
-  "description": "course project",
+  "description": "Mars Rovers project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
