@@ -124,3 +124,33 @@ const getRoverData = (state) => {
         .then(res => res.json())
         .then(data => updateStore({ data }))
 };
+
+
+/* Build the navbar */
+const navbarFunction = () => {
+    let nav = document.getElementById('myLinks');
+    if(nav.style.display === 'block') {
+        nav.style.display = 'none';
+    } else {
+        nav.style.display = 'block';
+    }
+};
+
+
+// About me section
+const img = document.querySelector('img');
+const icons = document.querySelector('.icons');
+img.onclick = function () {
+    this.classList.toggle('active');
+    icons.classList.toggle('active');
+}
+
+
+// Click the buttons
+document.querySelector('.btn1').onclick = function() {
+    location.href = 'https://www.linkedin.com/in/andrea-scacchi-10/';
+};
+
+document.querySelector('.btn2').onclick = function () {
+    location.href = 'https://github.com/AndreaScacchi';
+};
