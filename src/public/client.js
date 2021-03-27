@@ -14,7 +14,9 @@ const updateStore = (newState) => {
 };
 
 const render = async (root, state) => {
+    if(state !== null) {
     root.innerHTML = App(state);
+    };
 };
 
 
