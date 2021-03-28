@@ -14,9 +14,9 @@ const updateStore = (newState) => {
 };
 
 const render = async (root, state) => {
-    if(state !== null) {
-    root.innerHTML = App(state);
-    };
+    if (state !== null) {
+        root.innerHTML = App(state);
+    }
 };
 
 
@@ -32,9 +32,9 @@ const App = (state) => {
                 ${RoverData(state)}
             </section>
         </main>
-        <footer>
-            <h3>Project created by: Andrea Scacchi</h3>
-        </footer>
+        <div class="para">
+            <p>Project created by: Andrea Scacchi</p>
+        </div>
     `
 };
 
@@ -43,14 +43,14 @@ window.addEventListener('load', () => {
 });
 
 
-/* Components */
+/* Shwo the data of the rovers */
 const RoverData = (state) => {
     if (!state.pickedRover) {
         return (`
             ${roverContainerFunction(state, 'rover-container', connectDataFunction,
             state.rovers, roverCardFunction)}
         `)
-    }
+    };
 
     if (!state.data) {
         getRoverData(state);
@@ -64,9 +64,9 @@ const RoverData = (state) => {
         photos = state.data.results.photos;
     };
 
-    const photoURL = photos.map(photo => photo.img_src);
-
     const photoDate = photos[0].earth_date;
+
+    const photoURL = photos.map(photo => photo.img_src);
 
     const { name, launch_date, landing_date, status } = photos[0].rover;
 
@@ -79,8 +79,7 @@ const RoverData = (state) => {
             <li>Photos taken on: ${photoDate}</li>
         </ul>
         <button onclick="updateStore({pickedRover: '', data: ''})" class="button">Back</button>
-        ${roverContainerFunction(state, 'photo-container', connectDataFunction,
-        photoURL, photoFunction)}
+        ${roverContainerFunction(state, 'photo-container', connectDataFunction, photoURL, photoFunction)}
         <button onclick="updateStore({pickedRover: '', data: ''})" class="button">Back</button>
     `)
 };
@@ -136,23 +135,4 @@ const navbarFunction = () => {
     } else {
         nav.style.display = 'block';
     }
-};
-
-
-// About me section
-const img = document.querySelector('img');
-const icons = document.querySelector('.icons');
-img.onclick = function () {
-    this.classList.toggle('active');
-    icons.classList.toggle('active');
-}
-
-
-// Click the buttons
-document.querySelector('.btn1').onclick = function() {
-    location.href = 'https://www.linkedin.com/in/andrea-scacchi-10/';
-};
-
-document.querySelector('.btn2').onclick = function () {
-    location.href = 'https://github.com/AndreaScacchi';
 };
