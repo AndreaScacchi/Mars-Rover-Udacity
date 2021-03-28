@@ -13,7 +13,6 @@ app.use('/', express.static(path.join(__dirname, '../public')));
 
 
 // API call
-
 app.get('/:name', async (req, res) => {
     const name = req.params.name.toLowerCase();
 
@@ -21,15 +20,15 @@ app.get('/:name', async (req, res) => {
     let url;
     if (name === 'spirit') {
         date = '2010-02-01'
-        url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${name}/photos?earth_date=${date}&api_key=${process.env.API_KEY}`;
+        url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${name}/photos?earth_date=${date}&api_key=${process.env.API_KEY}`
     } else if (name === 'opportunity') {
         date = '2018-06-04'
-        url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${name}/photos?earth_date=${date}&api_key=${process.env.API_KEY}`;
+        url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${name}/photos?earth_date=${date}&api_key=${process.env.API_KEY}`
     } else if (name === 'curiosity') {
         url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${name}/latest_photos?api_key=${process.env.API_KEY}`;
     } else {
         res.send('Invalid address. Choose /opportunity, /spirit or /curiosity');
-        return
+        return;
     };
 
     try {
